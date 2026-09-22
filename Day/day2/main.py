@@ -9,4 +9,9 @@ def about():
 @app.get("/health")
 def health():
     return {"status":"ok"}
+#post reuest
+@app.post("/create")
+def create_something():
+    return {"message":"created successfullys"}
+
 
