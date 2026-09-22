@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 app =FastAPI()
 @app.get("/")
 def read_root():
@@ -17,9 +18,19 @@ def create_something():
 #path parameter
 @app.get("/students/{usn}")
 def get_student(usn):
-    return{"retuen":"distinction", "usn":usn}
+    return{"return":"distinction", "usn":usn}
 # pathparameter with Type Hint
 
-@app.get("/candidate"/"{id}")
+@app.get("/candidate/{id}")
 def get_candiadte(id:int):
-    return {"id":id,"type":str(type(id)), "status":"selected"}
+    return {"return:":"distrinction","id":id,"type:":str(type(id))}
+
+#pydantic model
+class Item(BaseModel):
+    name:str
+    price:float
+    in_stock: bool =True
+
+@app.post("/items")
+def create_item(item:Item):
+    return {"receved":item, "total_price":item.price*1.18}
