@@ -14,4 +14,8 @@ def health():
 def create_something():
     return {"message":"created successfullys"}
 
+#path parameter
+@app.get("/students/{usn}")
+def get_student(usn):
+    return{"retuen":"distinction", "usn":usn}
 
